@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 export default {
   darkMode: ["class"],
@@ -13,6 +14,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Chakra Petch", ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -65,25 +69,28 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        glow: {
+          from: { boxShadow: "0 0 0 rgba(30,240,122,0)" },
+          to: { boxShadow: "0 0 36px rgba(30,240,122,0.35)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        glow: "glow 2s ease-in-out infinite alternate",
+      },
+      backgroundImage: {
+        pitch: "radial-gradient(60%_60%_at_80%_10%,rgba(30,240,122,0.18),transparent), radial-gradient(40%_40%_at_10%_90%,rgba(0,140,80,0.25),transparent)",
+      },
+      boxShadow: {
+        brand: "0 20px 80px -20px rgba(30,240,122,0.35)",
       },
     },
   },
