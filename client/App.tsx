@@ -32,7 +32,9 @@ const App = () => (
           <footer className="border-t border-white/10 py-6 text-sm text-muted-foreground">
             <div className="container max-w-6xl mx-auto flex items-center justify-between">
               <span>© {new Date().getFullYear()} Striker 3D</span>
-              <span className="hidden sm:inline">Built for beautiful football.</span>
+              <span className="hidden sm:inline">
+                Built for beautiful football.
+              </span>
             </div>
           </footer>
         </div>

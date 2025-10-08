@@ -3,7 +3,11 @@ import { cn } from "@/lib/utils";
 
 function BrandIcon({ className = "" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 48 48" className={cn("inline-block", className)} aria-hidden>
+    <svg
+      viewBox="0 0 48 48"
+      className={cn("inline-block", className)}
+      aria-hidden
+    >
       <defs>
         <radialGradient id="g" cx="50%" cy="50%" r="60%">
           <stop offset="0%" stopColor="#1ef07a" />
@@ -17,12 +21,23 @@ function BrandIcon({ className = "" }: { className?: string }) {
         <circle cx="36" cy="24" r="3" />
         <circle cx="24" cy="38" r="3" />
       </g>
-      <path d="M12 24h24M24 12v24" stroke="#1ef07a" strokeWidth="2.4" opacity="0.8" />
+      <path
+        d="M12 24h24M24 12v24"
+        stroke="#1ef07a"
+        strokeWidth="2.4"
+        opacity="0.8"
+      />
     </svg>
   );
 }
 
-const NavLink = ({ to, children }: { to: string; children: React.ReactNode }) => {
+const NavLink = ({
+  to,
+  children,
+}: {
+  to: string;
+  children: React.ReactNode;
+}) => {
   const { pathname } = useLocation();
   const active = pathname === to;
   return (

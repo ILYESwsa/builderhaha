@@ -1,5 +1,10 @@
 import { Canvas, useFrame } from "@react-three/fiber";
-import { ContactShadows, Environment, OrbitControls, Sparkles } from "@react-three/drei";
+import {
+  ContactShadows,
+  Environment,
+  OrbitControls,
+  Sparkles,
+} from "@react-three/drei";
 import * as THREE from "three";
 import { useMemo, useRef } from "react";
 
@@ -21,7 +26,7 @@ function SoccerBall({ radius = 1.2 }: { radius?: number }) {
 
     // Color pattern: every 5th face is black, with a bit of noise so it's not too uniform
     for (let f = 0; f < faceCount; f++) {
-      const isBlack = (f % 5 === 0) || (f % 7 === 0 && f % 2 === 0);
+      const isBlack = f % 5 === 0 || (f % 7 === 0 && f % 2 === 0);
       const color = isBlack ? black : white;
       for (let v = 0; v < 3; v++) {
         const i = (f * 3 + v) * 3;
@@ -44,19 +49,28 @@ function SoccerBall({ radius = 1.2 }: { radius?: number }) {
 
   return (
     <mesh ref={mesh} geometry={geometry} castShadow receiveShadow>
-      <meshStandardMaterial vertexColors roughness={0.35} metalness={0.1} envMapIntensity={0.6} />
+      <meshStandardMaterial
+        vertexColors
+        roughness={0.35}
+        metalness={0.1}
+        envMapIntensity={0.6}
+      />
     </mesh>
   );
 }
 
 function StadiumRim() {
-  const mat = useMemo(() => new THREE.MeshStandardMaterial({
-    color: new THREE.Color("#1ef07a"),
-    emissive: new THREE.Color("#0a3d27"),
-    emissiveIntensity: 0.35,
-    roughness: 0.7,
-    metalness: 0.2,
-  }), []);
+  const mat = useMemo(
+    () =>
+      new THREE.MeshStandardMaterial({
+        color: new THREE.Color("#1ef07a"),
+        emissive: new THREE.Color("#0a3d27"),
+        emissiveIntensity: 0.35,
+        roughness: 0.7,
+        metalness: 0.2,
+      }),
+    [],
+  );
   return (
     <mesh rotation={[Math.PI / 2, 0, 0]} position={[0, -1.6, 0]} receiveShadow>
       <torusGeometry args={[3.2, 0.08, 32, 256]} />
@@ -68,7 +82,11 @@ function StadiumRim() {
 export default function FootballScene() {
   return (
     <div className="relative w-full h-[460px] md:h-[540px] rounded-2xl overflow-hidden bg-gradient-to-b from-[#061d12] to-[#030e0a] ring-1 ring-white/10 shadow-[0_20px_80px_-20px_rgba(30,240,122,0.35)]">
-      <Canvas shadows camera={{ position: [2.6, 1.8, 4.2], fov: 38 }} dpr={[1, 2]}>
+      <Canvas
+        shadows
+        camera={{ position: [2.6, 1.8, 4.2], fov: 38 }}
+        dpr={[1, 2]}
+      >
         {/* Ambient and stadium lights */}
         <ambientLight intensity={0.45} />
         <spotLight
@@ -90,13 +108,31 @@ export default function FootballScene() {
 
         <group position={[0, -0.3, 0]}>
           <SoccerBall radius={1.25} />
-          <ContactShadows opacity={0.35} scale={12} blur={2.8} far={6} position={[0, -1.4, 0]} />
+          <ContactShadows
+            opacity={0.35}
+            scale={12}
+            blur={2.8}
+            far={6}
+            position={[0, -1.4, 0]}
+          />
           <StadiumRim />
         </group>
 
-        <Sparkles count={40} scale={[6, 3, 6]} size={2.5} speed={0.4} opacity={0.25} color="#bbffda" />
+        <Sparkles
+          count={40}
+          scale={[6, 3, 6]}
+          size={2.5}
+          speed={0.4}
+          opacity={0.25}
+          color="#bbffda"
+        />
         <Environment preset="night" />
-        <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.6} />
+        <OrbitControls
+          enableZoom={false}
+          enablePan={false}
+          autoRotate
+          autoRotateSpeed={0.6}
+        />
       </Canvas>
 
       {/* Subtle gradient vignette */}

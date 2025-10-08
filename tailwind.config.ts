@@ -87,7 +87,8 @@ export default {
         glow: "glow 2s ease-in-out infinite alternate",
       },
       backgroundImage: {
-        pitch: "radial-gradient(60%_60%_at_80%_10%,rgba(30,240,122,0.18),transparent), radial-gradient(40%_40%_at_10%_90%,rgba(0,140,80,0.25),transparent)",
+        pitch:
+          "radial-gradient(60%_60%_at_80%_10%,rgba(30,240,122,0.18),transparent), radial-gradient(40%_40%_at_10%_90%,rgba(0,140,80,0.25),transparent)",
       },
       boxShadow: {
         brand: "0 20px 80px -20px rgba(30,240,122,0.35)",
