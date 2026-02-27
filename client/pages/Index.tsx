@@ -66,7 +66,7 @@ export default function Index() {
             { h: "Rovers", a: "Northern Stars", k: "B" },
             { h: "Coastal FC", a: "Highland", k: "C" },
           ].map((m) => (
-            <Card key={m.k} className="bg-white/5 border-white/10">
+            <Card key={m.k} className="bg-white/5 border-white/10 glow-surface">
               <CardHeader>
                 <CardTitle className="text-xl flex items-center justify-between">
                   <span>{m.h}</span>
@@ -86,6 +86,19 @@ export default function Index() {
             </Card>
           ))}
         </div>
+      </section>
+
+      <section className="container max-w-6xl mx-auto pb-12 md:pb-16">
+        <Card className="bg-white/5 border-white/10 glow-surface">
+          <CardHeader>
+            <CardTitle className="text-2xl">Fully customizable viewing</CardTitle>
+            <CardDescription>
+              Open the settings icon in the top-right corner to tune theme
+              presets, accent hue, typography, spacing, and effects. Your
+              preferences are automatically saved.
+            </CardDescription>
+          </CardHeader>
+        </Card>
       </section>
     </div>
   );
