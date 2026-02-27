@@ -41,7 +41,7 @@ export default function Matches() {
       </p>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
         {sample.map((m) => (
-          <Card key={m.id} className="bg-white/5 border-white/10">
+          <Card key={m.id} className="bg-white/5 border-white/10 glow-surface">
             <CardHeader>
               <CardTitle className="text-xl flex items-center justify-between">
                 <span>{m.home}</span>

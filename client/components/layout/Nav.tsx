@@ -1,5 +1,16 @@
+import { type ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Settings2 } from "lucide-react";
+import CustomizationPanel from "@/components/theme/CustomizationPanel";
 
 function BrandIcon({ className = "" }: { className?: string }) {
   return (
@@ -36,7 +47,7 @@ const NavLink = ({
   children,
 }: {
   to: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) => {
   const { pathname } = useLocation();
   const active = pathname === to;
@@ -63,10 +74,29 @@ export default function Nav() {
           <BrandIcon className="h-7 w-7" />
           <span className="tracking-tight">Striker 3D</span>
         </Link>
-        <nav className="flex items-center gap-1">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/matches">Matches</NavLink>
-        </nav>
+        <div className="flex items-center gap-2">
+          <nav className="flex items-center gap-1">
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/matches">Matches</NavLink>
+          </nav>
+
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon" className="border-white/15">
+                <Settings2 className="h-4 w-4" />
+                <span className="sr-only">Open customization studio</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent className="w-[420px] sm:w-[520px] overflow-y-auto">
+              <SheetHeader>
+                <SheetTitle>Customize Striker 3D</SheetTitle>
+              </SheetHeader>
+              <div className="mt-6">
+                <CustomizationPanel />
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
